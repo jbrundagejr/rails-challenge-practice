@@ -1,3 +1,8 @@
+Building.destroy_all
+Company.destroy_all
+Employee.destroy_all
+Office.destroy_all
+
 weworks = [
   {name: "Finsbury Pavement", 
    country: "UK", 
@@ -19,6 +24,7 @@ weworks = [
   }
 ]
 
+puts "Creating buildings and companies..."
 weworks.each do |we|
   Building.create(we)
 end
@@ -37,6 +43,8 @@ companies.each do |company|
   Company.create(name: company)
 end
 
+puts "Creating Employees..."
+
 titles = [
   "CEO",
   "Engineer",
@@ -51,16 +59,18 @@ titles = [
   Employee.create(
     name: Faker::Name.name_with_middle,
     title: titles.sample,
-    company: Company.all.sample
+    company_id: Company.all.sample.id
   )
 end
 
+puts "Creating Offices..."
 10.times do 
   random_building = Building.all.sample
   random_building_floors_array = (1..random_building.number_of_floors).to_a
   Office.create(
-    company: Company.all.sample,
-    building: random_building,
+    company_id: Company.all.sample.id,
+    building_id: random_building.id,
     floor: random_building_floors_array.delete(random_building_floors_array.sample)
   )
 end
+puts "Done!"

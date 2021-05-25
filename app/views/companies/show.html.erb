@@ -1,0 +1,11 @@
+<h1><%= @company.name %></h1>
+<% if @company.building_names_and_floor_number.length > 0 %>
+<h3>Our Office Locations:</h3>
+<% @company.building_names_and_floor_number.map do |building| %>
+<ul>
+<li><%= building %></li>
+</ul>
+<% end %>
+<% else %>
+<h3>We are hoping to have an office location soon!</h3>
+<% end %>

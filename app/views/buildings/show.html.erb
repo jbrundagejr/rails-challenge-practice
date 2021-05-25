@@ -1,0 +1,9 @@
+<h1><%= @building.name %>
+<h3>Companies in <%= @building.name %></h3>
+<% @building.companies.map do |company_instance| %>
+  <ul>
+    <li><%= company_instance.name %></li>
+  </ul>
+<% end %>
+
+<h3>Total Earning in Rent (per month): <%= @building.total_rent%></h3>

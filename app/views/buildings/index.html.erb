@@ -1,0 +1,8 @@
+<h1>All of the Buildings</h1>
+<% @buildings.map do |building_instance| %>
+<h2><%= building_instance.name%></h2>
+  <h3>Floors Available: </h3>
+  <% building_instance.number_of_floors_available.map do |floors| %>
+   <p><%= floors %></p>
+   <% end %>
+<% end %>
